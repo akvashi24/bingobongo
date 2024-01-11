@@ -1,11 +1,8 @@
 import Head from 'next/head'
 import {useEffect, useState} from 'react';
-import Image from 'next/image'
-const TWITTER_HANDLE = "akvashi24"
-const TWITTER_LINK = "https://twitter.com/akvashi24"
 
 const NAMES = [
-  "Wind blows in heroine's hair",
+  "Wind blows through heroine's hair",
   "Hero is sad in the rain",
   "Son is in a rush so mom feeds him",
   "Montage of character being pensive at meetings",
@@ -16,25 +13,22 @@ const NAMES = [
   "Police officer is incompetent",
   "Family lives in obscene mansion",
   "Villain crying and apologizing",
-
-  "Son is in a rush so mom feeds him",
-  "Montage of character being pensive at meetings",
-  "Godawful white actor",
-  "Song scene in exotic location",
-  "Hero and heroine ride on a scooter",
-  "Child does bhajan with parents",
-  "Son is in a rush so mom feeds him",
-  "Montage of character being pensive at meetings",
-  "Godawful white actor",
-  "Song scene in exotic location",
-  "Hero and heroine ride on a scooter",
-  "Child does bhajan with parents",
-  "Son is in a rush so mom feeds him",
-  "Montage of character being pensive at meetings",
-  "Godawful white actor",
-  "Song scene in exotic location",
-  "Hero and heroine ride on a scooter",
-  "Child does bhajan with parents",
+  "Last wish scene",
+  "Slowmo entry of hero/heroine",
+  "Big age gap between hero and heroine",
+  "Action sequence that defies physics",
+  "Unnecessary flashback",
+  "Dream sequence song",
+  "Lovable estranged nanny",
+  "Funeral pyre",
+  "Arranged engagement to shallow jerk",
+  "True identity is revealed",
+  "Toxic family love",
+  "No means yes logic",
+  "Cop has a mustache"
+  // "Wind through SRK's hair",
+  // SRK shakes his head condescendingly
+  // SRK arms out pose
 ]
 
 function shuffle(array) {
@@ -84,6 +78,7 @@ function Square(props) {
 }
 
 export default function Home() {
+  console.log(NAMES.length)
   const [shuffled, setShuffled] = useState([]);
   useEffect(
     ()=> {
@@ -119,10 +114,10 @@ export default function Home() {
             <Square key={13} text={shuffled[13]} />
           </Row>
           <Row>
-          {range(13,18).map((e) => <Square key={e} text={shuffled[e]}/>)}
+          {range(14,19).map((e) => <Square key={e} text={shuffled[e]}/>)}
           </Row>
           <Row>
-          {range(18,23).map((e) => <Square key={e} text={shuffled[e]}/>)}
+          {range(19,24).map((e) => <Square key={e} text={shuffled[e]}/>)}
           </Row>
         </div>
       </div>
