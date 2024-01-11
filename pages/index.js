@@ -13,6 +13,10 @@ const NAMES = [
   "Song scene in exotic location",
   "Hero and heroine ride on a scooter",
   "Child does bhajan with parents",
+  "Police officer is incompetent",
+  "Family lives in obscene mansion",
+  "Villain crying and apologizing",
+
   "Son is in a rush so mom feeds him",
   "Montage of character being pensive at meetings",
   "Godawful white actor",
@@ -73,7 +77,8 @@ function Square(props) {
   const [clicked, setClicked] = useState(false)
   return (
   <div onClick={() => setClicked(!clicked)}
-   className={'aspect-square w-full max-w-12 md:text-base text-xs flex flex-col justify-center text-zinc-100 border' + " " + (clicked ? 'bg-green-500' : '')}
+  style={{fontSize: '8px'}}
+   className={'px-1 aspect-square w-full max-w-12 md:text-base text-xs flex flex-col justify-center text-zinc-100 border' + " " + (clicked ? 'bg-green-500' : '')}
    >{props.text}</div>
   )
 }
