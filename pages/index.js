@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Next Starter by akvashi24</title>
+        <title>Bollywood Bingo</title>
         <meta name="description" content="Hand-made by Adin Vashi" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
