@@ -1,7 +1,37 @@
 import Head from 'next/head'
+import {useState} from 'react';
 import Image from 'next/image'
 const TWITTER_HANDLE = "akvashi24"
 const TWITTER_LINK = "https://twitter.com/akvashi24"
+
+const NAMES = [
+  "Wind blows in heroine's hair",
+  "Hero is sad in the rain",
+  "Son is in a rush so mom feeds him",
+  "Monage of character being pensive at meetings",
+  "Godawful white actor",
+  "Song scene in exotic location",
+  "Hero and heroine ride on a scooter",
+  ""
+]
+
+function Row(props) {
+  return(
+    <div className='px-8 flex flex-row mx-auto'>
+      {props.children}
+    </div>
+  )
+}
+
+function Square(props) {
+  const [clicked, setClicked] = useState(false)
+  return (
+  <div onClick={() => setClicked(!clicked)}
+   className={'h-48 w-48 flex flex-col justify-center text-zinc-100' + " " + (clicked ? 'bg-green-500' : '') + " " + props.classes}>
+    {props.text}
+  </div>
+  )
+}
 
 export default function Home() {
   return (
@@ -13,33 +43,46 @@ export default function Home() {
       </Head>
 
       <div className="h-screen text-center bg-zinc-900">
-        <div className="flex flex-col justify-between h-full bg-zinc-900">
-          <div className="pt-8 text-center bg-zinc-900">
-            <div className="mb-4">
-              <span className={"bg-gradient-to-br text-center from-cyan-400 to-purple-500 bg-clip-text text-transparent text-6xl font-black mb-8"}>Next.js Starterpack</span>
-            </div>
-            <div className="w-1/2 mx-auto overflow-wrap">
-              <p className="mb-4 font-2xl text-zinc-100">
-                Comes with:
-              </p>
-              <ul className="mb-4 font-semibold text-white">
-                <li>Next.js</li>
-                <li>Tailwindcss</li>
-              </ul>
-              <span className="text-white">That&apos;s it for now!</span>
-            </div>
-          </div>
-          <div className="flex items-center justify-center pt-4">
-            <div className='h-7 w-7'>
-              <Image alt="Twitter Logo" className="h-7 w-7" height="25px" width="25px" src="/icons/twitter-logo.svg" />
-            </div>
-            <a
-              className="font-semibold text-zinc-100 decoration-cyan-400"
-              href={TWITTER_LINK}
-              target="_blank"
-              rel="noreferrer"
-            >{`built by @${TWITTER_HANDLE}`}</a>
-          </div>
+        <div className='py-4'>
+        <span className='text-zinc-100 font-bold'>Bollywood Bingo</span>
+        </div>
+        <div className="flex flex-col h-full bg-zinc-900 pt-8 content-center">
+          <Row>
+            <Square text='wthat in tarnation'/>
+            <Square classes='border-l border-r'/>
+            <Square classes='border-l border-r'/>
+            <Square classes='border-l border-r'/>
+            <Square/>
+          </Row>
+          <Row>
+            <Square classes='border-t border-b'/>
+            <Square classes='border-r border-l border-t border-b'/>
+            <Square classes='border-r border-l border-t border-b'/>
+            <Square classes='border-r border-l border-t border-b'/>
+            <Square classes='border-t border-b'/>
+          </Row>
+          <Row>
+            <Square classes='border-t border-b'/>
+            <Square classes='border-r border-l border-t border-b'/>
+            <Square classes='border-r border-l border-t border-b' text='FREE'/>
+            <Square classes='border-r border-l border-t border-b'/>
+            <Square classes='border-t border-b'/>
+          </Row>
+          <Row>
+            <Square classes='border-t border-b'/>
+            <Square classes='border-r border-l border-t border-b'/>
+            <Square classes='border-r border-l border-t border-b'/>
+            <Square classes='border-r border-l border-t border-b'/>
+            <Square classes='border-t border-b'/>
+          </Row>
+          <Row>
+            <Square/>
+            <Square classes='border-r border-l'/>
+            <Square classes='border-r border-l'/>
+            <Square classes='border-r border-l'/>
+            <Square/>
+          </Row>
+          
         </div>
       </div>
     </div>
