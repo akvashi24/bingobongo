@@ -61,7 +61,7 @@ function range(start, stop, step) {
 
 function Row(props) {
   return(
-    <div className='md:px-8 flex flex-row mx-auto w-full'>
+    <div className='md:px-8 flex flex-row mx-auto w-full justify-center'>
       {props.children}
     </div>
   )
@@ -95,7 +95,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-100 text-center bg-zinc-900">
+      <div className="h-screen sm:h-100 text-center bg-zinc-900">
         <div className='py-4'>
         <span className='text-zinc-100 font-bold'>Bollywood Bingo</span>
         </div>
