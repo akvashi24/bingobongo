@@ -95,11 +95,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen sm:h-100 text-center bg-zinc-900">
+      <div className="h-100 text-center bg-zinc-900">
         <div className='py-4'>
         <span className='text-zinc-100 font-bold'>Bollywood Bingo</span>
         </div>
-        <div className="flex flex-col h-full bg-zinc-900 pt-8 content-center">
+        <div className="flex flex-col h-100 bg-zinc-900 pt-8 content-center">
           <Row>
             {range(0,5).map((e) => <Square key={e} text={shuffled[e]}/>)}
           </Row>
