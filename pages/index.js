@@ -72,7 +72,7 @@ function Square(props) {
   return (
   <div onClick={() => setClicked(!clicked)}
   style={{fontSize: '8px'}}
-   className={'px-1 aspect-square w-full max-w-12 md:text-base text-xs flex flex-col justify-center text-zinc-100 border' + " " + (clicked ? 'bg-green-500' : '')}
+   className={'px-1 aspect-square w-full max-w-48 md:text-base text-xs flex flex-col justify-center text-zinc-100 border' + " " + (clicked ? 'bg-green-500' : '')}
    >{props.text}</div>
   )
 }
