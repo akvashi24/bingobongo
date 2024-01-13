@@ -99,7 +99,7 @@ export default function Home() {
         <div className='py-4'>
         <span className='text-zinc-100 font-bold'>Bollywood Bingo</span>
         </div>
-        <div className="flex flex-col h-100 bg-zinc-900 pt-8 pb-16 content-center max-w-48 px-1">
+        <div className="flex flex-col h-100 bg-zinc-900 pt-8 pb-16 content-center px-1 ">
           <Row>
             {range(0,5).map((e) => <Square key={e} text={shuffled[e]}/>)}
           </Row>
