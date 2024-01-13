@@ -25,7 +25,8 @@ const NAMES = [
   "True identity is revealed",
   "Toxic family love",
   "No means yes logic",
-  "Cop has a mustache"
+  "Cop has a mustache",
+  "Hero grabs heroine's wrist too aggressively"
   // "Wind through SRK's hair",
   // SRK shakes his head condescendingly
   // SRK arms out pose
@@ -71,8 +72,7 @@ function Square(props) {
   const [clicked, setClicked] = useState(false)
   return (
   <div onClick={() => setClicked(!clicked)}
-  style={{fontSize: '8px'}}
-   className={'px-1 aspect-square border-box w-full max-w-48 md:text-base text-xs flex flex-col justify-center text-zinc-100 border' + " " + (clicked ? 'bg-green-500' : '')}
+   className={'px-1 md:px-4 overflow-scroll-y aspect-square border-box w-full max-w-48 md:text-lg text-xs flex flex-col justify-center text-zinc-100 border' + " " + (clicked ? 'bg-green-600' : '')}
    >{props.text}</div>
   )
 }
@@ -99,7 +99,7 @@ export default function Home() {
         <div className='py-4'>
         <span className='text-zinc-100 font-bold'>Bollywood Bingo</span>
         </div>
-        <div className="flex flex-col h-100 bg-zinc-900 pt-8 content-center">
+        <div className="flex flex-col h-100 bg-zinc-900 pt-8 pb-16 content-center max-w-48 px-1">
           <Row>
             {range(0,5).map((e) => <Square key={e} text={shuffled[e]}/>)}
           </Row>
