@@ -62,15 +62,43 @@ function range(start, stop, step) {
 const BOARD_SIZE = 5
 
 
-export default function Home() {
-  const [shuffled, setShuffled] = useState([]);
-  const [squares, setSquares] = useState(Array.from({ length: 25 }, () => false))
-  const [bingo, setBingo] = useState(false)
+function useStickyState(defaultValue, key) {
+  const [value, setValue] = useState(() => {
+    let stickyValue = null
+    if (typeof window !== 'undefined') {
+       stickyValue = window.localStorage.getItem(key);
+    }
+      return stickyValue !== null
+      ? JSON.parse(stickyValue)
+      : defaultValue;
+    });
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+  return [value, setValue];
+}
 
+function useHasMounted() {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  return hasMounted;
+}
+
+export default function Home() {
+  const [shuffled, setShuffled] = useStickyState([], 'shuffled');
+  const [squares, setSquares] = useStickyState(Array.from({ length: 25 }, () => false), 'squares')
+  const [bingo, setBingo] = useStickyState(false, 'bingo')
+
+  const hasMounted = useHasMounted()
+  
   useEffect(
     ()=> {
-      const shuffledNames = shuffle(NAMES)
-      setShuffled(shuffledNames)
+      if (shuffled.length === 0) {
+        const shuffledNames = shuffle(NAMES)
+        setShuffled(shuffledNames)
+      }
     }, [])
 
   const checkBingo = (list) => {
@@ -103,12 +131,20 @@ export default function Home() {
     }
   }
 
+  const refresh = () => {
+    setShuffled(shuffle(NAMES))
+    setSquares(Array.from({ length: 25 }, () => false))
+    setBingo(false)
+  }
+
   function Square(props) {
+
+    useEffect(()=> checkBingo(squares), [])
+
     const handleClick = () => {
       const newList = [...squares]
       newList[props.index] = !newList[props.index]
       setSquares(newList)
-      checkBingo(newList)
     }
 
     const imageUrl = 'https://st1.latestly.com/wp-content/uploads/2022/06/Shah-Rukh-Khan-Pose.jpg'
@@ -133,8 +169,12 @@ export default function Home() {
     )
   }
 
+  if (!hasMounted) {
+    return null
+  }
+
   return (
-    <div>
+    <div suppressHydrationWarning>
       <Head>
         <title>Bollywood Bingo</title>
         <meta name="description" content="Hand-made by Adin Vashi" />
@@ -165,7 +205,10 @@ export default function Home() {
           <Row>
           {range(20,25).map((e) => <Square key={e} index={e} text={shuffled[e]}/>)}
           </Row>
-        <div className='text-center bg-zinc-900 mt-8'>
+        <div className='mt-8 text-left'>
+          <button onClick={refresh} className='text-zinc-100 text-xs px-3 py-2 border border-zinc-100 rounded-md'>Refresh</button>
+        </div>
+        <div className='text-center bg-zinc-900 mt-8 h-16'>
           { bingo ? 
             <span className='text-green-500 font-bold text-5xl animate-pulse uppercase'>
               Bingo!
