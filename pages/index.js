@@ -182,8 +182,8 @@ export default function Home() {
       </Head>
 
       <div className="h-screen sm:h-100 bg-zinc-900">
-        <div className='py-6'>
-        <span className='px-4 sm:px-32 text-zinc-100 font-bold'>Bollywood Bingo</span>
+        <div className='py-6 sm:text-center'>
+        <span className='px-4 text-zinc-100 font-bold max-w-5xl mx-auto w-full'>Bollywood Bingo</span>
         </div>
         <div className="flex flex-col h-100 bg-zinc-900 pb-16 content-center px-1 text-center ">
           <Row>
@@ -205,7 +205,7 @@ export default function Home() {
           <Row>
           {range(20,25).map((e) => <Square key={e} index={e} text={shuffled[e]}/>)}
           </Row>
-        <div className='mt-8 text-left'>
+        <div className='mt-8 text-left px-4 sm:text-center'>
           <button onClick={refresh} className='text-zinc-100 text-xs px-3 py-2 border border-zinc-100 rounded-md'>Refresh</button>
         </div>
         <div className='text-center bg-zinc-900 mt-8 h-16'>
