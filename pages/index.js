@@ -26,7 +26,10 @@ const NAMES = [
   "Toxic family love",
   "No means yes logic",
   "Cop has a mustache",
-  "Hero grabs heroine's wrist too aggressively"
+  "Hero grabs heroine's wrist too aggressively",
+  "Dramatic zoom in",
+  "Actress dupatta flies in the wind",
+  "Dance includes hiding behind something"
   // "Wind through SRK's hair",
   // SRK shakes his head condescendingly
   // SRK arms out pose
